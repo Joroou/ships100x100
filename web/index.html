@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Морской бой 100×100</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="conn-banner" class="banner bad hidden">Соединение потеряно — переподключение…</div>
+
+  <!-- ===== Меню ===== -->
+  <section id="screen-menu" class="screen">
+    <div class="card">
+      <h1>⚓ Морской бой 100×100</h1>
+      <label for="name">Ваше имя</label>
+      <input id="name" maxlength="20" placeholder="Капитан" autocomplete="off">
+      <button id="btn-create" class="primary">Создать игру</button>
+      <div class="sep">или</div>
+      <label for="code">Код лобби</label>
+      <input id="code" maxlength="6" placeholder="ABC123" autocomplete="off">
+      <button id="btn-join">Подключиться к игре</button>
+      <p id="lan-info" class="hint"></p>
+      <button id="btn-shutdown" class="link">Выключить сервер</button>
+    </div>
+  </section>
+
+  <!-- ===== Ожидание в лобби ===== -->
+  <section id="screen-lobby" class="screen hidden">
+    <div class="card">
+      <h2>Лобби</h2>
+      <div class="hint">Код для второго игрока:</div>
+      <div id="lobby-code" class="bigcode"></div>
+      <div id="lobby-players"></div>
+      <p id="lobby-hint" class="hint"></p>
+      <button id="btn-start" class="primary">Начать игру</button>
+      <button id="btn-lobby-leave">Выйти</button>
+    </div>
+  </section>
+
+  <!-- ===== Игра ===== -->
+  <section id="screen-game" class="screen hidden">
+    <header id="topbar">
+      <div class="pill" id="tb-you"></div>
+      <div class="pill status" id="tb-status"></div>
+      <div class="pill" id="tb-opp"></div>
+      <div class="pill" id="tb-code"></div>
+    </header>
+    <div id="opp-banner" class="banner warn hidden"></div>
+    <div id="game-layout">
+      <div id="board-wrap">
+        <canvas id="board"></canvas>
+        <div id="zoom">
+          <button id="z-in" title="Приблизить" aria-label="Приблизить">+</button>
+          <button id="z-out" title="Отдалить" aria-label="Отдалить">−</button>
+          <button id="z-fit" title="Вписать поле" aria-label="Вписать поле">⤢</button>
+        </div>
+        <div id="coords"></div>
+      </div>
+      <aside id="side">
+        <div id="placement-panel" class="panel hidden"></div>
+        <div id="gadget-panel" class="panel hidden"></div>
+        <div class="panel">
+          <h3>Журнал</h3>
+          <div id="log"></div>
+          <p class="hint legend">Зелёная клетка — ваш корабль. ✕ красный — попадание, ✕ серый — промах,
+            тёмно-серая — потоплено. Самые тёмные клетки — туман. Светлые — разведаны вами, бирюзовые — разведаны соперником.
+            Оранжевая «?» — вражеский корабль в разведанной области (любой из игроков). Свои корабли всегда зелёные. R — повернуть. Колесо мыши — масштаб, перетаскивание — сдвиг.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ===== Итог игры ===== -->
+  <div id="result" class="overlay hidden">
+    <div class="card">
+      <h2 id="result-title"></h2>
+      <p id="result-text"></p>
+      <p id="result-score" class="hint"></p>
+      <button id="btn-menu" class="primary">Вернуться в меню</button>
+    </div>
+  </div>
+
+  <div id="toasts"></div>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
